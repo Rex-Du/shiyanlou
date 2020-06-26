@@ -12,6 +12,7 @@
 # 5 调用 Singleton ，表面上看是对 Singleton 类进行实例化，实际上是调用 SingletonDeco 类的实例的 __call__ 方法。因为变量 Singleton 指向的就是 SingletonDeco 的实例。调用 __call__ 的结果就是调用 instance 方法，下一步就是对调用实例的 _cls 属性，而这个属性的值就是原 Singleton 类。综上所述，这个最终的调用结果还是原 Singleton 的实例。绕这么大一圈，一切都是为了在 instance 方法中实现唯一实例。
 """
 
+
 class SingletonDeco:
     def __init__(self, cls):
         self._cls = cls
@@ -34,7 +35,7 @@ class Singleton:
 
 
 if __name__ == '__main__':
-    s1 = Singleton()    # 5
+    s1 = Singleton()  # 5
     s2 = Singleton()
     print('id(s1):', s1.display())
     print('id(s2):', s2.display())
